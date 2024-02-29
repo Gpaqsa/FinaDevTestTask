@@ -1,22 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+//import { NavMenu } from './components/NavMenu';
 import AppRoutes from './AppRoutes';
-import { Layout } from './components/Layout';
 import './custom.css';
+import NavMenu from './components/NavMenu'; // Import NavMenu without curly braces
+import Home from './components/Home';
 
-export default class App extends Component {
-  static displayName = App.name;
+const App = () => (
+    <main>
+        {/* Render NavMenu outside Routes */}
+        <NavMenu />
 
-  render() {
-    return (
-      <Layout>
         <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, ...rest } = route;
-            return <Route key={index} {...rest} element={element} />;
-          })}
+            {AppRoutes.map((route, index) => {
+                const { element, ...rest } = route;
+                return <Route key={index} {...rest} element={element} />;
+            })}
+
         </Routes>
-      </Layout>
-    );
-  }
-}
+    </main>
+);
+
+export default App;
