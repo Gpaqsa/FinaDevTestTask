@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  finadevtesttask:
+    image: ${DOCKER_REGISTRY-}finadevtesttask
+    build:
+      context: .
+      dockerfile: ./Dockerfile
